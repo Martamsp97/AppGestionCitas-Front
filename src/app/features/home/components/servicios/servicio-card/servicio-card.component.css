@@ -1,0 +1,24 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: white;
+}
+
+.card-izquierda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.card-derecha {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+}

@@ -7,15 +7,15 @@ import { Servicio } from '../../../interfaces/servicio.interface';
 export class ServiciosService {
 
   private servicios: Servicio[] = [
-    { nombre: 'rehabilitacion', duracion_minutos: 60 },
-    { nombre: 'pilates', duracion_minutos: 45 },
-    { nombre: 'indiba', duracion_minutos: 30 },
-    { nombre: 'drenaje linfatico', duracion_minutos: 30 },
-    { nombre: 'masoterapia', duracion_minutos: 60 },
-    { nombre: 'acupuntura', duracion_minutos: 30 },
-    { nombre: 'epte', duracion_minutos: 20 },
-    { nombre: 'osteopatia', duracion_minutos: 60 },
-    { nombre: 'terapia deportiva', duracion_minutos: 60 },
+    { clave: 'rehabilitacion', nombre: "Rehabilitación", duracion_minutos: 60, precio: 50 },
+    { clave: 'pilates', nombre: "Pilates", duracion_minutos: 45, precio: 30 },
+    { clave: 'indiba', nombre: "INDIBA", duracion_minutos: 30, precio: 40 },
+    { clave: 'drenaje linfatico', nombre: "Drenaje Linfático", duracion_minutos: 30, precio: 35 },
+    { clave: 'masoterapia', nombre: "Masoterapia", duracion_minutos: 60, precio: 45 },
+    { clave: 'acupuntura', nombre: "Acupuntura", duracion_minutos: 30, precio: 40 },
+    { clave: 'epte', nombre: "EPTE", duracion_minutos: 20, precio: 25 },
+    { clave: 'osteopatia', nombre: "Osteopatía", duracion_minutos: 60, precio: 55 },
+    { clave: 'terapia deportiva', nombre: "Terapia Deportiva", duracion_minutos: 60, precio: 50 },
   ];
 
   constructor() { }
