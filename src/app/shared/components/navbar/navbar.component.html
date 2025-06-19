@@ -1,11 +1,13 @@
-<nav class="navbar">
+<nav class="flex items-center justify-between p-4 bg-white shadow-md px-6 md:px-12">
     <div class="logo">
-        <a routerLink="/home">
-            <img src="images/LOGO.png" alt="logo">
+        <a routerLink="/home" class="block">
+            <figure class="w-48 h-48 md:w-64 md:h-64 mx-auto">
+                <img src="assets/images/logo.png" alt="logo">
+            </figure>
         </a>
     </div>
-    <ul class="nav-links">
-        <li><a routerLink="/registro">Registro</a></li>
-        <li><a routerLink="/login">Login</a></li>
+    <ul class="nav-links flex space-x-6">
+        <li><a routerLink="/registro" class="text-text hover:text-primary font-primary md:text-lg">Registro</a></li>
+        <li><a routerLink="/login" class="text-text hover:text-primary font-primary md:text-lg">Login</a></li>
     </ul>
 </nav>

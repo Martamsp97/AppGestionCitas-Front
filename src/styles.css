@@ -29,4 +29,11 @@ html {
     --color-text: #3C3C3B;
     --color-primary: #ABD6BC;
     --color-secondary: #D5B6D7;
+    --color-fondo: #EDEDED;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block
 }

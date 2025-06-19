@@ -9,6 +9,7 @@ module.exports = {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
         text: 'var(--color-text)',
+        fondo: 'var(--color-fondo)',
       },
       fontFamily: {
         primary: ['var(--font-primary)'],
