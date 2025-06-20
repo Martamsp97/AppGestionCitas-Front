@@ -2,6 +2,7 @@
 // Este archivo define la estructura de un servicio en la aplicación de gestión de citas
 
 export interface Servicio {
+    id: number;
     clave: string;
     nombre: string;
     duracion_minutos: number;

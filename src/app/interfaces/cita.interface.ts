@@ -2,6 +2,7 @@ import { Servicio } from './servicio.interface';
 import { Especialista } from './especialista.interface';
 
 export interface Cita {
+    id: number;
     servicio: Servicio;
     especialista: Especialista;
     cliente_nombre: string;

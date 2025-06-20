@@ -23,6 +23,7 @@ export class EspecialistasService {
     this.especialistas = [
       // 1 y 2: Rehabilitación y terapia manual (mañana y tarde)
       {
+        id: 0,
         nombre: 'Ana',
         apellidos: 'García',
         email: 'ana.garcia@sirona.com',
@@ -37,6 +38,7 @@ export class EspecialistasService {
         ]
       },
       {
+        id: 1,
         nombre: 'Luis',
         apellidos: 'Martínez',
         email: 'luis.martinez@sirona.com',
@@ -53,6 +55,7 @@ export class EspecialistasService {
 
       // 3 y 4: Osteopatía y masoterapia
       {
+        id: 2,
         nombre: 'María',
         apellidos: 'López',
         email: 'maria.lopez@sirona.com',
@@ -67,6 +70,7 @@ export class EspecialistasService {
         ]
       },
       {
+        id: 3,
         nombre: 'Javier',
         apellidos: 'Sánchez',
         email: 'javier.sanchez@sirona.com',
@@ -83,6 +87,7 @@ export class EspecialistasService {
 
       // 5 y 6: EPTE y acupuntura
       {
+        id: 4,
         nombre: 'Sofía',
         apellidos: 'Fernández',
         email: 'sofia.fernandez@sirona.com',
@@ -97,6 +102,7 @@ export class EspecialistasService {
         ]
       },
       {
+        id: 5,
         nombre: 'Carlos',
         apellidos: 'Rodríguez',
         email: 'carlos.rodriguez@sirona.com',
@@ -113,6 +119,7 @@ export class EspecialistasService {
 
       // 7 y 8: INDIBA y drenaje linfático
       {
+        id: 6,
         nombre: 'Lucía',
         apellidos: 'Torres',
         email: 'lucia.torres@sirona.com',
@@ -127,6 +134,7 @@ export class EspecialistasService {
         ]
       },
       {
+        id: 7,
         nombre: 'Miguel',
         apellidos: 'Ruiz',
         email: 'miguel.ruiz@sirona.com',
@@ -143,6 +151,7 @@ export class EspecialistasService {
 
       // 9 y 10: Pilates
       {
+        id: 8,
         nombre: 'Elena',
         apellidos: 'Jiménez',
         email: 'elena.jimenez@sirona.com',
@@ -156,6 +165,7 @@ export class EspecialistasService {
         ]
       },
       {
+        id: 9,
         nombre: 'Diego',
         apellidos: 'Molina',
         email: 'diego.molina@sirona.com',

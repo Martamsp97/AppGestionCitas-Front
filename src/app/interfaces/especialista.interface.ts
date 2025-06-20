@@ -10,6 +10,7 @@ export interface Horario {
 }
 
 export interface Especialista {
+    id: number;
     nombre: string;
     apellidos: string;
     email: string;
