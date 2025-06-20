@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Especialista } from 'src/app/interfaces/especialista.interface';
 
 @Component({
   selector: 'app-especialista-card',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./especialista-card.component.css']
 })
 export class EspecialistaCardComponent {
-
+  @Input() especialista!: Especialista;
 }
