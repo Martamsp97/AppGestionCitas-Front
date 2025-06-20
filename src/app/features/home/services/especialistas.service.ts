@@ -27,7 +27,7 @@ export class EspecialistasService {
         apellidos: 'García',
         email: 'ana.garcia@sirona.com',
         telefono: '600123456',
-        foto_url: 'https://img.freepik.com/foto-gratis/mujer-sonriente-tiro-medio_23-2149178088.jpg?uid=R90202148&ga=GA1.1.321857198.1748291746&semt=ais_hybrid&w=740',
+        foto_url: 'assets/images/ana.png',
         servicios_asignados: [
           serviciosMap.get('rehabilitacion')!,
           serviciosMap.get('terapia deportiva')!,
@@ -41,7 +41,7 @@ export class EspecialistasService {
         apellidos: 'Martínez',
         email: 'luis.martinez@sirona.com',
         telefono: '600654321',
-        foto_url: 'assets/fotos/luis.jpg',
+        foto_url: 'assets/images/luis.png',
         servicios_asignados: [
           serviciosMap.get('rehabilitacion')!,
           serviciosMap.get('terapia deportiva')!,
