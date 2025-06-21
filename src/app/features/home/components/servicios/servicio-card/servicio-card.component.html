@@ -1,9 +1,11 @@
-<div class="card mb-4">
-    <div class="card-izquierda">
-        <h3 class=" text-primary font-secondary text-xl md:text-2xl mb-1 ">{{ servicio.nombre }}</h3>
-        <p class="text-text font-primary ">{{ servicio.duracion_minutos }} minutos</p>
+<a [routerLink]="['/citas/servicio', servicio.id]">
+    <div class="card mb-4 hover:border-secondary border-4">
+        <div class="card-izquierda">
+            <h3 class=" text-primary font-secondary text-xl md:text-2xl mb-1 ">{{ servicio.nombre }}</h3>
+            <p class="text-text font-primary ">{{ servicio.duracion_minutos }} minutos</p>
+        </div>
+        <div class="card-derecha">
+            <p class="text-secondary font-secondary text:2xl md:text-3xl"> {{servicio.precio| currency:'EUR'}}</p>
+        </div>
     </div>
-    <div class="card-derecha">
-        <p class="text-secondary font-secondary text:2xl md:text-3xl"> {{servicio.precio| currency:'EUR'}}</p>
-    </div>
-</div>
+</a>
