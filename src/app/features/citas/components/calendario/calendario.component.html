@@ -32,7 +32,8 @@
     <!-- Días del mes -->
     <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
         <button *ngFor="let dia of diasDelMes" (click)="seleccionarDia(dia)"
-            class="font-primary px-4 py-2 border rounded bg-white text-black font-primary hover:bg-secondary hover:text-white">
+            class="font-primary px-4 py-2 border rounded bg-white text-black font-primary  hover:bg-secondary hover:text-white"
+            [ngClass]="{'font-bold text-secondary': diaSeleccionado === dia, }">
             {{ dia | date: 'd' }}
         </button>
     </div>
@@ -45,7 +46,8 @@
         </h4>
         <div class=" grid grid-cols-4 justify-center gap-6">
             <button *ngFor="let hora of horasDisponibles" (click)="seleccionarHora(hora)"
-                class="px-8 py-3 border rounded bg-white text-text text-md md:text-3xl hover:bg-secondary hover:text-white font-primary">
+                class="px-8 py-3 border rounded bg-white text-text text-md md:text-3xl hover:bg-secondary hover:text-white font-primary"
+                [ngClass]="{'font-bold text-secondary': horaSeleccionada === hora}">
                 {{ hora }}
             </button>
         </div>
@@ -53,11 +55,4 @@
         <div *ngIf="diaSeleccionado && horasDisponibles.length === 0" class="sin-horas">
             <p>No hay horas disponibles para este día.</p>
         </div>
-    </div>
-
-    <div *ngIf="diaSeleccionado && horaSeleccionada" class="mt-6 text-center font-primary ">
-        <button (click)="continuar()"
-            class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg text-lg hover:text-primary hover:border-primary hover:bg-white hover:border-[3px] transition duration-300">
-            Continuar
-        </button>
     </div>

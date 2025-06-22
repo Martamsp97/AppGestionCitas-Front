@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Especialista } from 'src/app/interfaces/especialista.interface';
 import { EspecialistasService } from 'src/app/features/home/services/especialistas.service';
 import { Servicio } from 'src/app/interfaces/servicio.interface';
@@ -15,11 +15,12 @@ export class CitasDesdeServicioComponent implements OnInit {
   especialistaSeleccionado: Especialista | null = null;
   servicioSeleccionado: Servicio | null = null;
   citasDelEspecialista: Cita[] = [];
-
+  fechaHora: { inicio: Date, fin: Date } | null = null;
   // El constructor recibe ActivatedRoute para acceder a los parámetros de la ruta
   // y EspecialistasService para obtener la lista de especialistas.
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private especialistasService: EspecialistasService,
     private serviciosService: ServiciosService
   ) { }
@@ -55,9 +56,28 @@ export class CitasDesdeServicioComponent implements OnInit {
     this.especialistaSeleccionado = esp;
   }
 
-  onFechaSeleccionada(fecha: Date): void {
-    console.log('Hora seleccionada desde calendario:', fecha);
-    // Aquí podrías abrir un modal de confirmación, guardar la cita, etc.
+  onFechaHoraSeleccionada(datos: { inicio: Date; fin: Date }): void {
+    console.log('Fecha y hora seleccionadas:', datos);
+    this.fechaHora = datos;
   }
+  continuar(): void {
+    if (!this.fechaHora || !this.especialistaSeleccionado || !this.servicioSeleccionado) {
+      alert('Faltan datos para continuar');
+      return;
+    }
+
+    const citaParcial: Partial<Cita> = {
+      servicio: this.servicioSeleccionado,
+      especialista: this.especialistaSeleccionado,
+      inicio: this.fechaHora.inicio,
+      fin: this.fechaHora.fin,
+      estado: 'pendiente'
+    };
+
+    console.log('Cita parcial completa:', citaParcial);
+    // Aquí puedes guardar en un servicio o navegar
+    this.router.navigate(['/citas/datos-cliente'], { state: { cita: citaParcial } });
+  }
+
 
 }

@@ -9,6 +9,7 @@ import { CitasComponent } from './citas/citas.component';
 import { BreadCrumbsComponent } from './components/bread-crumbs/bread-crumbs.component';
 import { FiltroComponent } from './components/filtro/filtro.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
+import { CitaFormularioClienteComponent } from './cita-formulario-cliente/cita-formulario-cliente.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
     CitasComponent,
     BreadCrumbsComponent,
     FiltroComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    CitaFormularioClienteComponent
   ],
   imports: [
     CommonModule,

@@ -7,7 +7,17 @@
         <app-filtro (especialistaSeleccionado)="especialistaSeleccionado = $event"></app-filtro>
         <app-calendario [especialistaSeleccionado]="especialistaSeleccionado"
             [servicioSeleccionado]="servicioSeleccionado" [citas]="citasDelEspecialista"
-            (fechaHoraSeleccionado)="onFechaSeleccionada($event)"></app-calendario>
+            (fechaHoraSeleccionado)="onFechaHoraSeleccionada($event)"></app-calendario>
+        <div class="mt-6 text-left font-primary ">
+            <button (click)="continuar()" [disabled]="!fechaHora" class="py-3 px-8 rounded-lg text-lg" [ngClass]="{
+                                ' bg-primary hover:bg-primary-dark text-white font-bold cursor-pointer hover:text-primary hover:border-primary hover:bg-white hover:border-[3px] transition duration-300': fechaHora,
+                                'bg-gray-400 text-gray-700 cursor-not-allowed': !fechaHora
+                              }">
+
+                Continuar
+            </button>
+        </div>
     </div>
+
 
 </section>

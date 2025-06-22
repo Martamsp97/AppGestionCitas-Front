@@ -1,19 +1,13 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {
-  addMonths,
-  subMonths,
-  startOfMonth,
-  startOfDay,
-  isBefore,
-  isSameDay,
-  addMinutes,
-  parse, format
+  addMonths, subMonths, startOfMonth, startOfDay, isBefore, addMinutes, parse
 } from 'date-fns';
 
 import { Cita } from 'src/app/interfaces/cita.interface';
 import { Especialista, Horario } from 'src/app/interfaces/especialista.interface';
 import { Servicio } from 'src/app/interfaces/servicio.interface';
 import { CitasService } from '../../services/citas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendario',
@@ -25,9 +19,9 @@ export class CalendarioComponent implements OnInit {
   @Input() servicioSeleccionado: Servicio | null = null;
   @Input() citas: Cita[] = [];
 
-  @Output() fechaHoraSeleccionado = new EventEmitter<Date>();
+  @Output() fechaHoraSeleccionado = new EventEmitter<{ inicio: Date; fin: Date }>();
 
-  @Output() citaSeleccionada = new EventEmitter<Partial<Cita>>();
+
 
 
   mesActual: Date = new Date();
@@ -40,7 +34,7 @@ export class CalendarioComponent implements OnInit {
 
   // Inyectamos el servicio de citas para poder acceder a las citas almacenadas
   // y generar las horas disponibles según el especialista y servicio seleccionados.
-  constructor(private citasService: CitasService) { }
+  constructor(private citasService: CitasService, private router: Router) { }
 
   //inicializamos el componente y generamos los días del mes 
   ngOnInit(): void {
@@ -170,15 +164,11 @@ export class CalendarioComponent implements OnInit {
     };
   }
 
-  // 
-  seleccionarHora(hora: string): void {
-    this.horaSeleccionada = hora;
-  }
 
   //Guardamos la fecha y hora seleccionada y la emitimos al componente padre
   //para que pueda ser utilizada en el proceso de creación de la cita.
-  continuar(): void {
-    if (!this.diaSeleccionado || !this.horaSeleccionada || !this.especialistaSeleccionado || !this.servicioSeleccionado) {
+  emitirFechaYHora(): void {
+    if (!this.diaSeleccionado || !this.horaSeleccionada || !this.servicioSeleccionado) {
       return;
     }
 
@@ -188,17 +178,14 @@ export class CalendarioComponent implements OnInit {
 
     const fin = addMinutes(inicio, this.servicioSeleccionado.duracion_minutos);
 
-    const citaParcial: Partial<Cita> = {
-      especialista: this.especialistaSeleccionado,
-      servicio: this.servicioSeleccionado,
-      inicio,
-      fin,
-      estado: 'pendiente',
-    };
-
-    this.citaSeleccionada.emit(citaParcial);
-    console.log(citaParcial);
+    this.fechaHoraSeleccionado.emit({ inicio, fin });
   }
+  seleccionarHora(hora: string): void {
+    this.horaSeleccionada = hora;
+    this.emitirFechaYHora();
+  }
+
+
 }
 
 
