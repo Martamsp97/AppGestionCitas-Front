@@ -1,0 +1,63 @@
+<h2 class="text-2xl md:text-3xl font-secondary text-left mt-[40px] text-primary">Selecciona a una fecha y hora</h2>
+
+<div class="max-w-3xl w-full mt-10 p-6 border rounded shadow-sm bg-white">
+    <!-- Navegación entre meses -->
+    <div class="flex items-center justify-between mb-4">
+        <button (click)="irAlMesAnterior()" [disabled]="!puedeIrAlMesAnterior"
+            class="text-lg px-3 py-1 rounded font-bold" [ngClass]="{
+          'bg-secondary text-white cursor-pointer': puedeIrAlMesAnterior,
+          'bg-gray-300 text-gray-500 cursor-not-allowed': !puedeIrAlMesAnterior
+        }">
+            ◀
+        </button>
+        <div class="font-secondary text-xl md:text-4xl text-secondary capitalize">{{ mesYAnio | titlecase }}</div>
+        <button (click)="irAlMesSiguiente()" class="text-lg px-3 py-1 rounded bg-secondary text-white font-bold">
+            ▶
+        </button>
+    </div>
+
+    <!-- Días de la semana -->
+    <div
+        class="grid grid-cols-5 gap-2 text-center text-gray-600 text-md md:text-2xl mb-4 font-primary text-center justify-center items-center">
+        <ng-container *ngFor="let dia of diasDeLaSemana">
+            <div class="grid grid-cols-5 text-center justify-center items-center">
+                <button class="p-2 text-center justify-center items-center">
+                    {{ dia }}
+                </button>
+            </div>
+        </ng-container>
+
+    </div>
+
+    <!-- Días del mes -->
+    <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
+        <button *ngFor="let dia of diasDelMes" (click)="seleccionarDia(dia)"
+            class="font-primary px-4 py-2 border rounded bg-white text-black font-primary hover:bg-secondary hover:text-white">
+            {{ dia | date: 'd' }}
+        </button>
+    </div>
+
+    <!-- Selección de horas -->
+    <div *ngIf="horasDisponibles.length > 0" class="mt-8 p-6 bg-gray-100 rounded text-center font-primary">
+
+        <h4 class="mb-6 text-md md:text-3xl">
+            Horas disponibles para {{ diaSeleccionado | date: 'fullDate' }}:
+        </h4>
+        <div class=" grid grid-cols-4 justify-center gap-6">
+            <button *ngFor="let hora of horasDisponibles" (click)="seleccionarHora(hora)"
+                class="px-8 py-3 border rounded bg-white text-text text-md md:text-3xl hover:bg-secondary hover:text-white font-primary">
+                {{ hora }}
+            </button>
+        </div>
+        <!-- Sin disponibilidad -->
+        <div *ngIf="diaSeleccionado && horasDisponibles.length === 0" class="sin-horas">
+            <p>No hay horas disponibles para este día.</p>
+        </div>
+    </div>
+
+    <div *ngIf="diaSeleccionado && horaSeleccionada" class="mt-6 text-center font-primary ">
+        <button (click)="continuar()"
+            class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg text-lg hover:text-primary hover:border-primary hover:bg-white hover:border-[3px] transition duration-300">
+            Continuar
+        </button>
+    </div>

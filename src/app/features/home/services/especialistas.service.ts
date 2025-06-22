@@ -16,9 +16,9 @@ export class EspecialistasService {
 
     const servicios = this.serviciosService.getServicios();
 
-    // Mapeo para acceder rápido a servicios por clave
-    const serviciosMap = new Map<string, Servicio>(
-      servicios.map(s => [s.clave, s])
+    // Mapeo para acceder rápido a servicios por id
+    const serviciosMap = new Map<number, Servicio>(
+      servicios.map(s => [s.id, s])
     );
     this.especialistas = [
       // 1 y 2: Rehabilitación y terapia manual (mañana y tarde)
@@ -30,8 +30,8 @@ export class EspecialistasService {
         telefono: '600123456',
         foto_url: 'assets/images/ana.png',
         servicios_asignados: [
-          serviciosMap.get('rehabilitacion')!,
-          serviciosMap.get('terapia deportiva')!,
+          serviciosMap.get(0)!,
+          serviciosMap.get(8)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '08:30', hora_fin: '14:30' }
@@ -45,8 +45,8 @@ export class EspecialistasService {
         telefono: '600654321',
         foto_url: 'assets/images/luis.png',
         servicios_asignados: [
-          serviciosMap.get('rehabilitacion')!,
-          serviciosMap.get('terapia deportiva')!,
+          serviciosMap.get(0)!,
+          serviciosMap.get(8)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '14:30', hora_fin: '20:30' }
@@ -62,8 +62,8 @@ export class EspecialistasService {
         telefono: '600789012',
         foto_url: 'assets/images/maria.png',
         servicios_asignados: [
-          serviciosMap.get('osteopatia')!,
-          serviciosMap.get('masoterapia')!,
+          serviciosMap.get(7)!,
+          serviciosMap.get(4)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '08:30', hora_fin: '14:30' }
@@ -77,8 +77,8 @@ export class EspecialistasService {
         telefono: '600345678',
         foto_url: 'assets/images/javier.png',
         servicios_asignados: [
-          serviciosMap.get('osteopatia')!,
-          serviciosMap.get('masoterapia')!,
+          serviciosMap.get(7)!,
+          serviciosMap.get(4)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '14:30', hora_fin: '20:30' }
@@ -94,8 +94,8 @@ export class EspecialistasService {
         telefono: '600456789',
         foto_url: 'assets/images/sofia.png',
         servicios_asignados: [
-          serviciosMap.get('epte')!,
-          serviciosMap.get('acupuntura')!,
+          serviciosMap.get(6)!,
+          serviciosMap.get(5)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '08:30', hora_fin: '14:30' }
@@ -109,8 +109,8 @@ export class EspecialistasService {
         telefono: '600987654',
         foto_url: 'assets/images/carlos.png',
         servicios_asignados: [
-          serviciosMap.get('epte')!,
-          serviciosMap.get('acupuntura')!,
+          serviciosMap.get(6)!,
+          serviciosMap.get(5)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '14:30', hora_fin: '20:30' }
@@ -126,8 +126,8 @@ export class EspecialistasService {
         telefono: '600321987',
         foto_url: 'assets/images/lucia.png',
         servicios_asignados: [
-          serviciosMap.get('indiba')!,
-          serviciosMap.get('drenaje linfatico')!,
+          serviciosMap.get(2)!,
+          serviciosMap.get(3)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '08:30', hora_fin: '14:30' }
@@ -141,8 +141,8 @@ export class EspecialistasService {
         telefono: '600765432',
         foto_url: 'assets/images/miguel.png',
         servicios_asignados: [
-          serviciosMap.get('indiba')!,
-          serviciosMap.get('drenaje linfatico')!,
+          serviciosMap.get(2)!,
+          serviciosMap.get(3)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '14:30', hora_fin: '20:30' }
@@ -158,7 +158,7 @@ export class EspecialistasService {
         telefono: '600112233',
         foto_url: 'assets/images/elena.png',
         servicios_asignados: [
-          serviciosMap.get('pilates')!,
+          serviciosMap.get(1)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '08:30', hora_fin: '14:30' }
@@ -172,7 +172,7 @@ export class EspecialistasService {
         telefono: '600998877',
         foto_url: 'assets/images/diego.png',
         servicios_asignados: [
-          serviciosMap.get('pilates')!,
+          serviciosMap.get(1)!,
         ],
         horario: [
           { dia: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'], hora_inicio: '14:30', hora_fin: '20:30' }

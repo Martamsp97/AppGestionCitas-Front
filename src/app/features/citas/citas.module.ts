@@ -6,6 +6,9 @@ import { CitasDesdeEspecialistaComponent } from './pages/citas-desde-especialist
 import { CitasDesdeServicioComponent } from './pages/citas-desde-servicio/citas-desde-servicio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CitasComponent } from './citas/citas.component';
+import { BreadCrumbsComponent } from './components/bread-crumbs/bread-crumbs.component';
+import { FiltroComponent } from './components/filtro/filtro.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
 
 
 @NgModule({
@@ -14,7 +17,10 @@ import { CitasComponent } from './citas/citas.component';
     // Por ejemplo, si tienes componentes como CitasDesdeServicioComponent y CitasDesdeEspecialistaComponent,
     CitasDesdeEspecialistaComponent,
     CitasDesdeServicioComponent,
-    CitasComponent
+    CitasComponent,
+    BreadCrumbsComponent,
+    FiltroComponent,
+    CalendarioComponent
   ],
   imports: [
     CommonModule,

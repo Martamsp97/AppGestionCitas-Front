@@ -102,8 +102,8 @@ export class CitasService {
       cliente_email: 'esther@example.com',
       notas_cliente: '',
       notas_profesional: '',
-      inicio: new Date('2025-06-28T11:00:00'),
-      fin: new Date('2025-06-28T11:30:00'),
+      inicio: new Date('2025-06-27T11:00:00'),
+      fin: new Date('2025-06-27T11:30:00'),
       estado: 'pendiente'
     },
     {
