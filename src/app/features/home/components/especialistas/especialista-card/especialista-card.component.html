@@ -1,19 +1,22 @@
-<div class="card mb-4 text-center">
-    <div class="card-imagen">
-        <figure class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
-            <img [src]="especialista.foto_url" alt="{{ especialista.nombre }} {{ especialista.apellidos }}">
-        </figure>
-    </div>
+<a [routerLink]="['/citas/especialista', especialista.id]">
 
-    <div class="card-nombre mb-2">
-        <h3 class="text-primary font-secondary text-xl md:text-2xl">
-            {{ especialista.nombre }} {{ especialista.apellidos }}
-        </h3>
-    </div>
+    <div class="card mb-4 text-center hover:border-secondary border-4">
+        <div class="card-imagen">
+            <figure class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
+                <img [src]="especialista.foto_url" alt="{{ especialista.nombre }} {{ especialista.apellidos }}">
+            </figure>
+        </div>
 
-    <div class="card-servicios space-y-1">
-        <p class="text-text font-primary" *ngFor="let servicio of especialista.servicios_asignados">
-            {{ servicio.nombre }}
-        </p>
+        <div class="card-nombre mb-2">
+            <h3 class="text-primary font-secondary text-xl md:text-2xl">
+                {{ especialista.nombre }} {{ especialista.apellidos }}
+            </h3>
+        </div>
+
+        <div class="card-servicios space-y-1">
+            <p class="text-text font-primary" *ngFor="let servicio of especialista.servicios_asignados">
+                {{ servicio.nombre }}
+            </p>
+        </div>
     </div>
-</div>
+</a>

@@ -10,6 +10,7 @@ import { BreadCrumbsComponent } from './components/bread-crumbs/bread-crumbs.com
 import { FiltroComponent } from './components/filtro/filtro.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { CitaFormularioClienteComponent } from './cita-formulario-cliente/cita-formulario-cliente.component';
+import { FiltroServiciosComponent } from './components/filtro/filtro-servicios/filtro-servicios.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CitaFormularioClienteComponent } from './cita-formulario-cliente/cita-f
     BreadCrumbsComponent,
     FiltroComponent,
     CalendarioComponent,
-    CitaFormularioClienteComponent
+    CitaFormularioClienteComponent,
+    FiltroServiciosComponent
   ],
   imports: [
     CommonModule,
