@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './features/auth/pages/login/login.component';
 
 //Rutas principales de la aplicación. Se cargan al incicio. Sirven para navegar entre las diferentes secciones de la app.
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
     path: 'citas',
     loadChildren: () =>
       import('./features/citas/citas.module').then(m => m.CitasModule)
-  }
+  },
+  { path: 'login', component: LoginComponent },
 
 ];
 
