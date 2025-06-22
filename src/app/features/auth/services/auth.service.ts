@@ -49,10 +49,17 @@ export class AuthService {
   }
 
   /**
-   *  Verifica si un usuario existe con ese email y contraseña (login)
+   * Método login
+   * 
+   * - Recibe email y contraseña.
+   * - Busca en el array de usuarios si existe un usuario con esos datos.
+   * - Devuelve el usuario encontrado o `undefined` si no coincide.
+   * - No devuelve un observable, por lo que se usa de forma síncrona.
    */
-  autenticar(email: string, password: string): Usuario | undefined {
+
+  login(email: string, password: string): Usuario | undefined {
     return this.usuarios.find(u => u.email === email && u.password === password);
   }
+
 }
 

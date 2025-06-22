@@ -1,1 +1,61 @@
-<p>login works!</p>
+<section class="bg-fondo w-full h-[100vh] px-16 md:px-24 py-6 md:py-12  ">
+
+    <div class="bg-white mt-[100px] lg:mt-[200px] border-t-8 border-secondary rounded-lg shadow-lg p-8 md:p-12">
+        <hgroup>
+            <!-- 
+                            Título principal del formulario 
+                            Le da contexto al usuario de que está iniciando sesión 
+                          -->
+            <h3 class="pb-2 text-2xl md:text-3xl lg:text-4xl font-secondary text-left text-primary">Iniciar sesión
+            </h3>
+            <h5 class=" pb-12 text-left text-lg md:text-2xl lg:text-3xl font-primary text-text">Introduce tus datos para
+                acceder a tu perfil</h5>
+        </hgroup>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="space-y-6 w-[100%] md:w-[80%] lg:w-[50%]">
+
+            <!-- 
+            Campo de email Vinculado al control 'email' del formulario reactivo.
+            Se utiliza el atributo 'formControlName' para enlazar con el FormGroup definido en el componente.
+          -->
+            <div>
+                <label for="email"
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Email</label>
+                <input type="email" id="email" formControlName="email"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required
+                    placeholder="tucorreo@sirona.com" />
+            </div>
+
+            <!-- 
+            Campo de contraseña 
+            También enlazado al FormGroup usando 'formControlName'. 
+            El tipo "password" oculta los caracteres para mayor seguridad.
+          -->
+            <div>
+                <label for="password"
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Contraseña</label>
+                <input type="password" id="password" formControlName="password"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required
+                    placeholder="••••••••" />
+            </div>
+
+            <!-- 
+            Mensaje de error 
+            Solo se muestra si la variable 'errorMsg' tiene contenido.
+            Útil para informar al usuario de errores como credenciales incorrectas.
+          -->
+            <div *ngIf="errorMsg" class="font-primary text-secondary text-lg md:text-xl lg:text-2xl">
+                {{ errorMsg }}
+            </div>
+
+            <!-- 
+            Botón de envío 
+            Al hacer clic, se ejecuta la función 'onLogin()'.
+            El botón está estilizado con Tailwind para una buena experiencia de usuario.
+          -->
+            <button type="submit"
+                class="bg-primary hover:bg-white hover:text-primary hover:border-primary hover:border-[4px] text-white font-primary py-4 px-12 rounded text-xl md:text-2xl lg:text-3xl transition-colors duration-300">
+                Iniciar sesión
+            </button>
+        </form>
+    </div>
+</section>
