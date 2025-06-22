@@ -32,7 +32,7 @@ export class CitasDesdeServicioComponent implements OnInit {
     const servicioId = Number(this.route.snapshot.paramMap.get('id'));
 
     // Recuperar el servicio con ese ID
-    const todosLosServicios = this.serviciosService.getServicios(); // O llama al backend si es asíncrono
+    const todosLosServicios = this.serviciosService.getServicios();
 
     this.servicioSeleccionado = todosLosServicios.find(s => s.id === servicioId) || null;
 

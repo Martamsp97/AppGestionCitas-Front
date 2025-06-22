@@ -1,1 +1,12 @@
-<p>filtro-servicios works!</p>
+<h2 class="text-2xl md:text-3xl lg:text-4xl font-secondary text-left text-primary">Selecciona un servicio ofrecido por
+    el especialista</h2>
+<p class="text-left text-lg md:text-xl font-primary text-text">Elegir un servicio concreto puede afectar a la
+    disponibilidad de las citas.</p>
+
+<select required (change)="onSelectServicio($event)"
+    class="w-full md:w-1/2 bg-white border border-primary mt-6 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent p-4 text-lg md:text-xl font-primary text-text">
+    <option class="font-primary" value="" disabled selected>Elige un servicio</option>
+    <option class="font-primary" *ngFor="let s of serviciosEspecialista" [value]="s.id">
+        {{ s.nombre }}
+    </option>
+</select>
