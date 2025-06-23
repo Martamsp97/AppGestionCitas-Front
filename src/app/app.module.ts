@@ -12,6 +12,7 @@ import { DashboardAdminComponent } from './features/dashboard-admin/dashboard-ad
 import { CitasProfesionalComponent } from './features/dashboard-profesional/components/citas-profesional/citas-profesional.component';
 import { InfoProfesionalComponent } from './features/dashboard-profesional/components/info-profesional/info-profesional.component';
 import { CardCitaComponent } from './features/dashboard-profesional/components/citas-profesional/card-cita/card-cita.component';
+import { EditarCitaComponent } from './feature/dashboard-profesional/components/editar-cita/editar-cita.component';
 
 
 
@@ -26,6 +27,7 @@ import { CardCitaComponent } from './features/dashboard-profesional/components/c
     CitasProfesionalComponent,
     InfoProfesionalComponent,
     CardCitaComponent,
+    EditarCitaComponent,
 
 
 
