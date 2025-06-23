@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Usuario } from 'src/app/interfaces/usuario';
 
 @Component({
   selector: 'app-info-profesional',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./info-profesional.component.css']
 })
 export class InfoProfesionalComponent {
-
+  @Input() usuario!: Usuario;
 }

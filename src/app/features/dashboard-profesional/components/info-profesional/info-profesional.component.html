@@ -1,1 +1,42 @@
-<p>info-profesional works!</p>
+<div class="border border-secondary border-[3px] rounded-xl shadow-sm p-4 bg-white font-primary mb-4">
+    <div *ngIf="usuario">
+        <div class="grid grid-cols md:grid-cols-2 gap-8">
+            <article>
+                <figure>
+                    <img [src]="usuario.especialista?.foto_url"
+                        alt="{{usuario.especialista?.nombre}} {{usuario.especialista?.apellidos}}"
+                        class="w-full object-cover ">
+                </figure>
+            </article>
+            <article>
+                <h2 class="text-2xl md:text-3xl font-secondary text-primary mb-4">
+                    {{usuario.especialista?.nombre}} {{usuario.especialista?.apellidos}}
+                </h2>
+                <span class="text-secondary text-xl md:text-2xl mb-[50px] font-bold">Especialidades:</span>
+                <p class="text-xl mb-2" *ngFor="let servicio of usuario.especialista?.servicios_asignados">
+                    {{servicio.nombre}}
+                </p>
+                <div class="text-xl mb'2">
+                    <span class="text-secondary text-xl md:text-2xl mb-[50px] font-bold">Horario:</span>
+                    <div>
+                        <div class="text-xl mb-2 grid grid-rows" *ngFor="let hora of usuario.especialista?.horario">
+                            <p>{{hora.dia[0]}} : {{hora.hora_inicio}} - {{hora.hora_fin}}</p>
+                            <p>{{hora.dia[1]}} : {{hora.hora_inicio}} - {{hora.hora_fin}}</p>
+                            <p>{{hora.dia[2]}} : {{hora.hora_inicio}} - {{hora.hora_fin}}</p>
+                            <p>{{hora.dia[3]}} : {{hora.hora_inicio}} - {{hora.hora_fin}}</p>
+                            <p>{{hora.dia[4]}} : {{hora.hora_inicio}} - {{hora.hora_fin}}</p>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-secondary text-xl md:text-2xl mb-[50px] font-bold">Email:</span>
+                <p class="text-xl mb-2">
+                    {{usuario.email}}
+                </p>
+                <span class="text-secondary text-xl md:text-2xl mb-[50px] font-bold">Teléfono:</span>
+                <p class="text-xl mb-2">
+                    {{usuario.especialista?.telefono}}
+                </p>
+            </article>
+        </div>
+    </div>
+</div>

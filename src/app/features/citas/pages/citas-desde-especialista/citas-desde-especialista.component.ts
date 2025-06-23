@@ -75,8 +75,9 @@ export class CitasDesdeEspecialistaComponent implements OnInit {
       estado: 'pendiente'
     };
 
-    console.log('Cita parcial completa:', citaParcial);
-    // Aquí puedes guardar en un servicio o navegar
+    // Guardar la cita parcial en localStorage
+    localStorage.setItem('citaParcial', JSON.stringify(citaParcial));
+
     this.router.navigate(['/citas/datos-cliente'], { state: { cita: citaParcial } });
   }
 

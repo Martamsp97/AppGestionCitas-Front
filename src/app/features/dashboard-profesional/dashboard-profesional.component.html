@@ -6,22 +6,21 @@
     <section class="bg-fondo w-full h-[100vh] px-16 md:px-24 py-6 md:py-12  ">
 
         <div class="bg-white mt-[100px] lg:mt-[200px] border-t-8 border-secondary rounded-lg shadow-lg p-8 md:p-12">
-            <h3 class="text-2xl font-bold mb-4">Mis citas</h3>
 
-            <div *ngIf="citas.length === 0" class="text-gray-600">
-                <h5>No tienes citas asignadas.</h5>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div *ngFor="let cita of citas" class="bg-white shadow-lg rounded-xl p-4 border border-gray-100">
-                    <h3 class="text-lg font-semibold mb-1">
-                        {{ cita.cliente_nombre }} ({{ cita.estado }})
-                    </h3>
-                    <p><strong>Servicio:</strong> {{ cita.servicio.nombre }}</p>
-                    <p><strong>Fecha:</strong> {{ cita.inicio | date: 'fullDate' }}</p>
-                    <p><strong>Hora:</strong> {{ cita.inicio | date: 'shortTime' }}</p>
-                    <p><strong>Teléfono:</strong> {{ cita.cliente_telefono }}</p>
-                    <p><strong>Email:</strong> {{ cita.cliente_email }}</p>
+            <div class="grid grid-cols md:grid-cols-2 gap-10 p-6">
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-secondary text-primary mb-4">Mis citas</h3>
+
+                    <div *ngIf="citas.length === 0" class="text-gray-600">
+                        <h5>No tienes citas asignadas.</h5>
+                    </div>
+                    <app-citas-profesional [citas]="citas" class="w-2/3"></app-citas-profesional>
+                </div>
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-secondary text-primary mb-4">Mi perfil</h3>
+                    <app-info-profesional *ngIf="usuarioActivo" [usuario]="usuarioActivo"
+                        class="w-1/3"></app-info-profesional>
                 </div>
             </div>
         </div>

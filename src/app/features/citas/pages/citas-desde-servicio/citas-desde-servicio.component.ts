@@ -73,10 +73,11 @@ export class CitasDesdeServicioComponent implements OnInit {
       fin: this.fechaHora.fin,
       estado: 'pendiente'
     };
+    // Guardar la cita parcial en localStorage
 
-    console.log('Cita parcial completa:', citaParcial);
-    // Aquí puedes guardar en un servicio o navegar
-    this.router.navigate(['/citas/datos-cliente'], { state: { cita: citaParcial } });
+    localStorage.setItem('citaParcial', JSON.stringify(citaParcial));
+
+    this.router.navigate(['/citas/datos-cliente']);
   }
 
 

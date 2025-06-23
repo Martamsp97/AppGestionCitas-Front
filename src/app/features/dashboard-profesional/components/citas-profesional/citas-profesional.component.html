@@ -1,1 +1,3 @@
-<p>citas-profesional works!</p>
+<div *ngFor="let cita of citas">
+    <app-card-cita [cita]="cita" (eliminar)="borrarCita($event)" (editar)="editarCita($event)"></app-card-cita>
+</div>

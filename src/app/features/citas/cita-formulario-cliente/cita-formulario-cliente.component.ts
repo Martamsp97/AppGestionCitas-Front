@@ -23,9 +23,14 @@ export class CitaFormularioClienteComponent implements OnInit {
     if (state && state.cita) {
       this.cita = state.cita;
     } else {
-      alert('No hay datos de cita.');
-      this.router.navigate(['/citas']);
-      return;
+      const local = localStorage.getItem('citaParcial');
+      if (local) {
+        this.cita = JSON.parse(local);
+      } else {
+        alert('No hay datos de cita.');
+        this.router.navigate(['/citas']);
+        return;
+      }
     }
     this.formGroup = this.fb.group({
       cliente_nombre: ['', Validators.required],
@@ -49,10 +54,25 @@ export class CitaFormularioClienteComponent implements OnInit {
 
     // Guardar en localStorage
     const citasGuardadas = JSON.parse(localStorage.getItem('citas') || '[]');
-    citasGuardadas.push(citaCompleta);
+    const citaReducida = {
+      ...citaCompleta,
+      especialista: {
+        id: citaCompleta.especialista?.id,
+        nombre: citaCompleta.especialista?.nombre,
+        apellidos: citaCompleta.especialista?.apellidos,
+        email: citaCompleta.especialista?.email,
+      },
+      servicio: {
+        id: citaCompleta.servicio?.id,
+        nombre: citaCompleta.servicio?.nombre,
+        duracion: citaCompleta.servicio?.duracion_minutos
+      }
+    };
+
+    citasGuardadas.push(citaReducida);
     localStorage.setItem('citas', JSON.stringify(citasGuardadas));
 
-    // ✅ Confirmación y redirección
+    //  Confirmación y redirección
     alert('¡Tu cita ha sido reservada correctamente!');
     this.router.navigate(['/']);
   }

@@ -154,8 +154,13 @@ export class CitasService {
     //Recuperamos las citas del localStorage y si no existen, inicializamos con las citas predefinidas.
     const guardadas = localStorage.getItem('citas');
     this.citas = guardadas
-      ? JSON.parse(guardadas)
+      ? JSON.parse(guardadas).map((c: any) => ({
+        ...c,
+        inicio: new Date(c.inicio),
+        fin: new Date(c.fin),
+      }))
       : [...this.citasIniciales];
+
   }
 
   //Método `para recuperar las citas, tanto las predefinidas como las que se hayan creado posteriormente.
@@ -165,15 +170,12 @@ export class CitasService {
 
   //Añadimos solo las citas nuevas al localStorage, para evitar sobreescribir las predefinidas.
   //Generamos un id incremental para cada cita nueva recorreindo el array de citas y obteniendo el máximo id actual.
-
   addCita(cita: Cita): void {
     cita.id = this.citas.length
       ? Math.max(...this.citas.map(c => c.id)) + 1
       : 1;
     this.citas.push(cita);
-    //función para guardar las citas nuevas en el localStorage
-    const nuevas = this.citas.filter(c => c.id > this.citasIniciales.length);
-    localStorage.setItem('citas', JSON.stringify(nuevas));
+    localStorage.setItem('citas', JSON.stringify(this.citas));
   }
   /** Filtra citas por id de especialista */
   getCitasPorEspecialista(id: number): Cita[] {

@@ -1,1 +1,36 @@
-<p>card-cita works!</p>
+<div
+    class="border border-secondary border-[3px] rounded-xl shadow-sm p-4 bg-white font-primary mb-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+        <p class="text-2xl my-[20px] font-secondary  text-primary">Servicio : {{ cita.servicio.nombre }}</p>
+        <p class="font-primary text-xl">
+            <span class="text-secondary font-bold font-primary text-2xl">Día:</span> {{cita.inicio | date: 'd \'de\'
+            MMMM
+            \'de\'
+            y'}}
+        </p>
+        <p class="font-primary text-xl">
+            <span class="text-secondary font-bold font-primary text-2xl">Hora:</span> {{cita.inicio | date: 'HH:mm'}}
+        </p>
+        <p class="font-primary text-xl">
+            <span class="text-secondary font-bold font-primary text-2xl">Cliente:</span> {{cita.cliente_nombre}}
+        </p>
+        <p class="font-primary text-xl">
+            <span class="text-secondary font-bold font-primary text-2xl">Contacto:</span> {{cita.cliente_telefono}} /
+            {{cita.cliente_email}}
+        </p>
+        <p class="font-primary text-xl">
+            <span class="text-secondary font-bold font-primary text-2xl">Estado:</span> {{cita.estado}}
+        </p>
+    </div>
+    <div class="mt-4 grid grid-cols-1 w-[50%] gap-8">
+
+        <button (click)="editarCita()"
+            class="bg-primary font-primary text-white text-xl md:text-2xl  px-4 py-2 rounded hover:bg-white hover:text-primary hover:border-[3px] hover:border-primary">
+            Editar cita
+        </button>
+        <button (click)="borrarCita()"
+            class="bg-secondary font-primary text-white text-xl md:text-2xl  px-4 py-2 rounded hover:bg-white hover:text-secondary font-primary hover:border-[3px] hover:border-secondary font-primary">
+            Borrar cita
+        </button>
+    </div>
+</div>
