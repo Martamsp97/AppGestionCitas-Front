@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
+
+
   }
 
   /**
@@ -38,33 +40,34 @@ export class LoginComponent implements OnInit {
    */
   onLogin(): void {
     if (this.loginForm.invalid) {
-      // Si el formulario no es válido, mostramos error y no seguimos
       this.errorMsg = 'Por favor, rellena todos los campos correctamente.';
       return;
     }
 
-    // Obtenemos email y password desde el formulario
     const { email, password } = this.loginForm.value;
 
-    // Llamamos al servicio para intentar autenticar
+    // 1. Carga profesionales antes del login
+    this.authService.cargarUsuariosProfesionales();
+
+    // 2. Intento login
     const user = this.authService.login(email, password);
 
-    if (user) {
-      alert('¡Has iniciado sesión correctamente!');
-      // Login correcto: redirigir a dashboard u otra ruta
-      this.router.navigate(['']);
+    console.log('Usuario encontrado:', user); // Para debug
 
+    if (user) {
+      this.authService.setUsuarioActivo(user);
+      alert('¡Has iniciado sesión correctamente!');
+      if (user.rol === 'admin') {
+        this.router.navigate(['/dashboard/admin', user.id]);
+      } else if (user.rol === 'profesional') {
+        this.router.navigate(['/dashboard/profesional', user.id]);
+      }
     } else {
-      // Login incorrecto: mostrar mensaje de error
       this.errorMsg = 'Email o contraseña incorrectos.';
     }
-
-    //Redirigimos al dasboard-admin o dashboard-profesional según el rol del usuario
-    if (user?.rol === 'admin') {
-      this.router.navigate(['/dashboard/admin']);
-    } else {
-      this.router.navigate(['/dashboard/profesional']);
-    }
   }
+
+
+
 
 }

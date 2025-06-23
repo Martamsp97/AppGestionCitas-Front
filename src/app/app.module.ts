@@ -7,8 +7,11 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoginComponent } from './features/auth/pages/login/login.component';
 import { RegistroComponent } from './features/auth/pages/registro/registro.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AdminDashboardComponent } from './features/pages/dashboard/admin-dashboard/admin-dashboard.component';
-import { ProfesionalDashboardComponent } from './features/pages/dashboard/profesional-dashboard/profesional-dashboard.component';
+import { DashboardProfesionalComponent } from './features/dashboard-profesional/dashboard-profesional.component';
+import { DashboardAdminComponent } from './features/dashboard-admin/dashboard-admin.component';
+import { CitasProfesionalComponent } from './features/dashboard-profesional/components/citas-profesional/citas-profesional.component';
+import { InfoProfesionalComponent } from './features/dashboard-profesional/components/info-profesional/info-profesional.component';
+import { CardCitaComponent } from './features/dashboard-profesional/components/citas-profesional/card-cita/card-cita.component';
 
 
 
@@ -18,8 +21,11 @@ import { ProfesionalDashboardComponent } from './features/pages/dashboard/profes
     NavbarComponent,
     LoginComponent,
     RegistroComponent,
-    AdminDashboardComponent,
-    ProfesionalDashboardComponent,
+    DashboardProfesionalComponent,
+    DashboardAdminComponent,
+    CitasProfesionalComponent,
+    InfoProfesionalComponent,
+    CardCitaComponent,
 
 
 

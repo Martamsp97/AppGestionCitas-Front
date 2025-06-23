@@ -6,81 +6,115 @@ import { Usuario } from 'src/app/interfaces/usuario';
   providedIn: 'root'
 })
 export class AuthService {
-  // creamos la variable donde almacenar a los usuarios
-  private usuarios: Usuario[] = [];
-  // Usuario actualmente autenticado
+  // Almacenamos los usuarios disponibles para login
+  usuarios: Usuario[] = [];
+
+  // Usuario que ha iniciado sesión actualmente
   private usuarioActivo?: Usuario;
 
-
   constructor(private especialistasService: EspecialistasService) {
-    //Creamos al usuario administrador por defecto
+    // Creamos al usuario administrador por defecto
     this.usuarios.push({
       id: 0,
       email: 'admin@sirona.com',
       password: '12345',
       rol: 'admin'
     });
+    this.cargarUsuariosProfesionales();
 
+  }
 
-
-    //REcuperamos a los especialistas del servicio para crear a los usuarios con perfil de profesional
+  /**
+   * Carga usuarios con rol "profesional" a partir del array
+   * de especialistas disponibles en EspecialistasService.
+   * 
+   * 
+   */
+  cargarUsuariosProfesionales(): void {
     const especialistas = this.especialistasService.getEspecialistas();
 
-
-
-    // Creamos un usuario para cada especialista con rol 'profesional' 'recorreindo' el array de especialistas
     especialistas.forEach((e, i) => {
-      this.usuarios.push({
-        id: i + 1, // +1 para evitar el id 0 que es del admin
-        email: e.email,
-        password: '12345', // Contraseña por defecto para todos los profesionales
-        rol: 'profesional',
-        especialista: e // Asociamos el perfil del especialista al usuario
-      });
+      // Evita duplicar usuarios si ya han sido creados
+      const yaExiste = this.usuarios.find(u => u.email === e.email);
+      if (!yaExiste) {
+        this.usuarios.push({
+          id: this.usuarios.length,
+          email: e.email,
+          password: '12345',
+          rol: 'profesional',
+          especialista: e
+        });
+      }
     });
   }
 
   /**
-   * Devuelve todos los usuarios
+   * Devuelve todos los usuarios disponibles (admin y profesionales)
    */
   getUsuarios(): Usuario[] {
     return this.usuarios;
   }
 
   /**
-   *  Devuelve un usuario por su email
-   * @param email Email a buscar
+   * Busca y devuelve un usuario por su email
+   * @param email - email a buscar
    */
   getUsuarioPorEmail(email: string): Usuario | undefined {
     return this.usuarios.find(u => u.email === email);
   }
 
   /**
-   * Método login
-   * 
-   * - Recibe email y contraseña.
-   * - Busca en el array de usuarios si existe un usuario con esos datos.
-   * - Devuelve el usuario encontrado o `undefined` si no coincide.
-   * - No devuelve un observable, por lo que se usa de forma síncrona.
+   * Intenta iniciar sesión con email y contraseña
+   * @returns el usuario si coincide, undefined si no
    */
-
   login(email: string, password: string): Usuario | undefined {
     return this.usuarios.find(u => u.email === email && u.password === password);
   }
 
   /**
-  * Devuelve el usuario actualmente logueado.
-  */
+   * Guarda el usuario activo en memoria y en localStorage.
+   * 
+   * @param usuario Usuario que ha iniciado sesión.
+   * 
+   * Esto permite mantener la sesión incluso si se recarga la página,
+   * porque el usuario se guarda en localStorage.
+   */
+  setUsuarioActivo(usuario: Usuario): void {
+    this.usuarioActivo = usuario; // Guardamos en variable privada
+    // Guardamos en localStorage serializado para persistencia
+    localStorage.setItem('usuarioActivo', JSON.stringify(usuario));
+  }
+
+  /**
+   * Obtiene el usuario activo.
+   * 
+   * Primero comprueba si el usuario ya está en memoria (variable privada).
+   * Si no está, intenta cargarlo desde localStorage y parsearlo.
+   * Si no existe en localStorage, devuelve undefined.
+   * 
+   * @returns Usuario activo o undefined si no hay sesión iniciada.
+   */
   getUsuarioActivo(): Usuario | undefined {
+    if (!this.usuarioActivo) {
+      // Intentamos recuperar usuario almacenado en localStorage
+      const userStr = localStorage.getItem('usuarioActivo');
+      if (userStr) {
+        // Parseamos el JSON para convertirlo en objeto Usuario
+        this.usuarioActivo = JSON.parse(userStr);
+      }
+    }
     return this.usuarioActivo;
   }
 
   /**
-   * Cierra la sesión del usuario actual.
+   * Cierra la sesión actual.
+   * 
+   * Borra el usuario activo tanto de la variable en memoria como de localStorage,
+   * asegurando que la sesión quede completamente eliminada.
    */
   logout(): void {
-    this.usuarioActivo = undefined;
+    this.usuarioActivo = undefined;  // Limpiamos variable
+    localStorage.removeItem('usuarioActivo');  // Borramos de localStorage
   }
 
 }
-

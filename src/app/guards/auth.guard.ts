@@ -17,8 +17,9 @@ export const authGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
-  // Si no está logueado o no es profesional, redirigir al login
-  router.navigate(['/login']);
+  // Si no está logueado o no es profesional, redirigir a la home
+  router.navigate(['']);
+  alert('Acceso denegado. Usuario no autenticado o sin rol profesional.');
   return false;
 };
 
