@@ -8,6 +8,9 @@ import { Usuario } from 'src/app/interfaces/usuario';
 export class AuthService {
   // creamos la variable donde almacenar a los usuarios
   private usuarios: Usuario[] = [];
+  // Usuario actualmente autenticado
+  private usuarioActivo?: Usuario;
+
 
   constructor(private especialistasService: EspecialistasService) {
     //Creamos al usuario administrador por defecto
@@ -18,8 +21,12 @@ export class AuthService {
       rol: 'admin'
     });
 
+
+
     //REcuperamos a los especialistas del servicio para crear a los usuarios con perfil de profesional
     const especialistas = this.especialistasService.getEspecialistas();
+
+
 
     // Creamos un usuario para cada especialista con rol 'profesional' 'recorreindo' el array de especialistas
     especialistas.forEach((e, i) => {
@@ -59,6 +66,20 @@ export class AuthService {
 
   login(email: string, password: string): Usuario | undefined {
     return this.usuarios.find(u => u.email === email && u.password === password);
+  }
+
+  /**
+  * Devuelve el usuario actualmente logueado.
+  */
+  getUsuarioActivo(): Usuario | undefined {
+    return this.usuarioActivo;
+  }
+
+  /**
+   * Cierra la sesión del usuario actual.
+   */
+  logout(): void {
+    this.usuarioActivo = undefined;
   }
 
 }
