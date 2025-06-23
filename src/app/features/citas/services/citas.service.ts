@@ -187,4 +187,29 @@ export class CitasService {
     return this.citas.filter(c => c.servicio.id === id);
   }
 
+  /** Filtramos las citas por solapamiento para la edición de citas. Lo realizamos en servicio para que sea un método reutilizable */
+
+  haySolapamiento(nuevaInicio: string, nuevaFin: string, idActual?: number): boolean {
+    const citas = this.getCitas();
+
+    return citas.some(cita => {
+      if (idActual != null && cita.id === idActual) return false;
+
+      const inicioExistente = new Date(cita.inicio).getTime();
+      const finExistente = new Date(cita.fin).getTime();
+      const nuevoInicio = new Date(nuevaInicio).getTime();
+      const nuevoFin = new Date(nuevaFin).getTime();
+
+      return nuevoInicio < finExistente && nuevoFin > inicioExistente;
+    });
+  }
+
+  actualizarCita(citaEditada: Cita): void {
+    const index = this.citas.findIndex(c => c.id === citaEditada.id);
+    if (index !== -1) {
+      this.citas[index] = citaEditada;
+      localStorage.setItem('citas', JSON.stringify(this.citas));
+    }
+  }
+
 }

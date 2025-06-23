@@ -1,1 +1,121 @@
-<p>editar-cita works!</p>
+<section class="bg-fondo w-full h-[100vh] px-16 md:px-24 py-6 md:py-12  ">
+
+    <div class="bg-white mt-[100px] lg:mt-[200px] border-t-8 border-secondary rounded-lg shadow-lg p-8 md:p-12">
+        <hgroup>
+            <h3 class="pb-2 text-2xl md:text-3xl lg:text-4xl font-secondary text-left text-primary">Editar la reserva
+            </h3>
+            <h5 class=" pb-12 text-left text-lg md:text-2xl lg:text-3xl font-primary text-text">Introduce la información
+                correspondiente</h5>
+        </hgroup>
+
+        <form [formGroup]="form" (ngSubmit)="guardarCita()" class="space-y-6">
+
+            <!-- Campo: Servicio -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Servicio*</label>
+                <select formControlName="servicio"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required>
+                    <option *ngFor="let servicio of cita.especialista.servicios_asignados" [ngValue]="servicio">
+                        {{ servicio.nombre }}
+                    </option>
+                </select>
+            </div>
+            <!-- Campo: día -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Fecha*</label>
+                <input type="date" formControlName="fecha"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+            <!-- Campo: inicio cita -->
+            <div>
+                <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Hora
+                    inicio*</label>
+                <input type="time" formControlName="horaInicio"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+            <!-- Campo: fin cita -->
+            <div>
+                <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Hora
+                    fin*</label>
+                <input type="time" formControlName="horaFin"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+
+            <!-- Campo: Nombre -->
+            <div>
+                <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Nombre
+                    cliente*</label>
+                <input type="text" formControlName="cliente_nombre"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+
+            <!-- Campo: Teléfono -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Teléfono*</label>
+                <input type="tel" formControlName="cliente_telefono"
+                    class="w-full border px-4 py-2 rounded  font-primary text-lg md:text-xl lg:text-2xl" required />
+                <div *ngIf="form.get('cliente_telefono')?.touched && form.get('cliente_telefono')?.invalid"
+                    class="text-red-600 font-primary text-sm mt-1">
+                    <span *ngIf="form.get('cliente_telefono')?.errors?.['required']"
+                        class="font-primary text-secondary text-lg md:text-xl lg:text-2xl">
+                        El número de teléfono es obligatorio.
+                    </span>
+                    <span *ngIf="form.get('cliente_telefono')?.errors?.['pattern']"
+                        class="font-primary text-secondary text-lg md:text-xl lg:text-2xl">
+                        Escribe un número de teléfono válido (9 dígitos).
+                    </span>
+                </div>
+            </div>
+
+            <!-- Campo: Email -->
+            <div>
+                <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Email</label>
+                <input type="email" formControlName="cliente_email"
+                    class="w-full border px-4 py-2 rounded  font-primary text-lg md:text-xl lg:text-2xl" />
+                <div *ngIf="form.get('cliente_email')?.touched && form.get('cliente_email')?.invalid"
+                    class="text-red-600 font-primary text-sm mt-1">
+                    <span *ngIf="form.get('cliente_email')?.errors?.['email']"
+                        class="font-primary text-secondary text-lg md:text-xl lg:text-2xl">
+                        Escribe un correo electrónico válido.
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Campo: Notas -->
+            <div>
+                <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Notas
+                    paciente</label>
+                <textarea formControlName="notas_cliente"
+                    class="w-full border px-4 py-2 rounded  font-primary text-lg md:text-xl lg:text-2xl"></textarea>
+            </div>
+            <!-- Campo: Notas -->
+            <div>
+                <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Notas
+                    especialista</label>
+                <textarea formControlName="notas_cliente"
+                    class="w-full border px-4 py-2 rounded  font-primary text-lg md:text-xl lg:text-2xl"></textarea>
+            </div>
+
+            <!-- Confirmación previa -->
+            <div *ngIf="errorSolapamiento" class="text-red-600">
+                ❌ La cita se solapa con otra.
+            </div>
+
+            <button type="submit"
+                class="bg-primary hover:bg-white hover:text-primary hover:border-primary hover:border-[4px] text-white font-primary py-4 px-12 rounded text-xl md:text-2xl lg:text-3xl transition-colors duration-300">Guardar</button>
+            <button type="button"
+                class="bg-secondary hover:bg-white hover:text-secondary hover:border-secondary hover:border-[4px] text-white font-secondary py-4 px-12 rounded text-xl md:text-2xl lg:text-3xl transition-colors duration-300"
+                (click)="onCancelar()">Cancelar</button>
+
+        </form>
+
+
+        <span class="text-left text-lg md:text-xl font-primary text-text">Los campos marcados con * son
+            obligatorios</span>
+
+    </div>
+</section>

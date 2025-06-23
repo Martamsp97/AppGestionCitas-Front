@@ -61,6 +61,7 @@ export class CitaFormularioClienteComponent implements OnInit {
         nombre: citaCompleta.especialista?.nombre,
         apellidos: citaCompleta.especialista?.apellidos,
         email: citaCompleta.especialista?.email,
+        servicios_asignados: citaCompleta.especialista?.servicios_asignados,
       },
       servicio: {
         id: citaCompleta.servicio?.id,
