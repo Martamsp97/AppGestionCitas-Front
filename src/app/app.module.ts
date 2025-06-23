@@ -7,6 +7,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoginComponent } from './features/auth/pages/login/login.component';
 import { RegistroComponent } from './features/auth/pages/registro/registro.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminDashboardComponent } from './features/pages/dashboard/admin-dashboard/admin-dashboard.component';
+import { ProfesionalDashboardComponent } from './features/pages/dashboard/profesional-dashboard/profesional-dashboard.component';
 
 
 
@@ -16,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     LoginComponent,
     RegistroComponent,
+    AdminDashboardComponent,
+    ProfesionalDashboardComponent,
 
 
 

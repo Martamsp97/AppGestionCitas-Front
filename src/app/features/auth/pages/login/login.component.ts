@@ -58,6 +58,13 @@ export class LoginComponent implements OnInit {
       // Login incorrecto: mostrar mensaje de error
       this.errorMsg = 'Email o contraseña incorrectos.';
     }
+
+    //Redirigimos al dasboard-admin o dashboard-profesional según el rol del usuario
+    if (user?.rol === 'admin') {
+      this.router.navigate(['/dashboard/admin']);
+    } else {
+      this.router.navigate(['/dashboard/profesional']);
+    }
   }
 
 }
