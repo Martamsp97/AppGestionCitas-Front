@@ -3,23 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { EspecialistasComponent } from './components/especialistas/especialistas.component';
-import { ServiciosComponent } from './components/servicios/servicios.component';
-import { ServicioCardComponent } from './components/servicios/servicio-card/servicio-card.component';
-import { EspecialistaCardComponent } from './components/especialistas/especialista-card/especialista-card.component';
 
+// Importa SharedModule
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    EspecialistasComponent,
-    ServiciosComponent,
-    ServicioCardComponent,
-    EspecialistaCardComponent
+    HomeComponent  // Solo declaras el HomeComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    SharedModule  // Importas SharedModule para poder usar los componentes compartidos
   ]
 })
 export class HomeModule { }
+

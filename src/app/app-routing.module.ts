@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './features/auth/pages/login/login.component';
-import { authGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { DashboardProfesionalComponent } from './features/dashboard-profesional/dashboard-profesional.component';
 import { DashboardAdminComponent } from './features/dashboard-admin/dashboard-admin.component';
 import { EditarCitaComponent } from './features/dashboard-profesional/components/editar-cita/editar-cita.component';
@@ -29,8 +29,8 @@ const routes: Routes = [
   {
     path: 'dashboard',
     children: [
-      { path: 'admin/:id', component: DashboardAdminComponent },
-      { path: 'profesional/:id', component: DashboardProfesionalComponent, canActivate: [authGuard], },
+      { path: 'admin/:id', component: DashboardAdminComponent, canActivate: [AuthGuard] },
+      { path: 'profesional/:id', component: DashboardProfesionalComponent, },
       { path: 'editar-cita/:id', component: EditarCitaComponent },
 
 

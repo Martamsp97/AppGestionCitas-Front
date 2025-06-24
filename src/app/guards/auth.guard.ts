@@ -1,25 +1,36 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../features/auth/services/auth.service';
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-/**
- * ## AuthGuard  
- * Protege rutas privadas para profesionales.
- * Redirige al login si el usuario no está autenticado o no tiene el rol adecuado.
- */
-export const authGuard: CanActivateFn = (route, state) => {
-  const authService = inject(AuthService);
-  const router = inject(Router);
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
 
-  const user = authService.getUsuarioActivo();
+  constructor(private router: Router) { }
 
-  if (user && user.rol === 'profesional') {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    console.log('Ruta solicitada:', state.url);
+    const usuarioStr = localStorage.getItem('usuarioActivo');
+    console.log('Usuario en localStorage:', usuarioStr);
+    if (!usuarioStr) {
+      console.log('⛔ No hay usuario en localStorage. Redirigiendo a /login');
+      this.router.navigate(['/login']);
+      return false;
+    }
+
+    const usuario = JSON.parse(usuarioStr);
+    console.log('Usuario parseado:', usuario);
+
+    const isAdminRoute = state.url.startsWith('/dashboard/admin');
+    const esAdmin = usuario?.rol?.toLowerCase() === 'admin';
+
+    if (isAdminRoute && !esAdmin) {
+      console.log('⛔ Ruta admin pero usuario no es admin. Redirigiendo a /');
+      this.router.navigate(['/']);
+      return false;
+    }
+
     return true;
   }
-
-  // Si no está logueado o no es profesional, redirigir a la home
-  router.navigate(['']);
-  alert('Acceso denegado. Usuario no autenticado o sin rol profesional.');
-  return false;
-};
+}
 

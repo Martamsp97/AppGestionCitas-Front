@@ -56,12 +56,17 @@ export class LoginComponent implements OnInit {
 
     if (user) {
       this.authService.setUsuarioActivo(user);
-      alert('¡Has iniciado sesión correctamente!');
-      if (user.rol === 'admin') {
-        this.router.navigate(['/dashboard/admin', user.id]);
-      } else if (user.rol === 'profesional') {
-        this.router.navigate(['/dashboard/profesional', user.id]);
-      }
+
+      // Esperamos al siguiente ciclo de detección de cambios
+      setTimeout(() => {
+        alert('¡Has iniciado sesión correctamente!');
+
+        if (user.rol === 'admin') {
+          this.router.navigate(['/dashboard/admin', user.id]);
+        } else if (user.rol === 'profesional') {
+          this.router.navigate(['/dashboard/profesional', user.id]);
+        }
+      }, 0);
     } else {
       this.errorMsg = 'Email o contraseña incorrectos.';
     }
