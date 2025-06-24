@@ -38,13 +38,14 @@
                 </p>
             </article>
         </div>
+        <button *ngIf="mostrarBorrar"
+            class="bg-primary text-white px-4 py-2 text-xl md:text-2xl rounded hover:bg-white hover:text-primary border-2 border-primary mt-3 mr-2"
+            (click)="editarEspecialista()">Editar</button>
         <button *ngIf="mostrarBorrar" (click)="borrarEspecialista()"
-            class="bg-secondary text-white px-4 py-2 rounded hover:bg-white hover:text-secondary border-2 border-secondary">
+            class="bg-secondary text-white px-4 py-2 rounded hover:bg-white text-xl md:text-2xl hover:text-secondary border-2 border-secondary mt-3 ml-2">
             Borrar perfil
         </button>
-        <button
-            class="bg-primary text-white px-4 py-2 rounded hover:bg-white hover:text-primary border-2 border-primary"
-            (click)="editarEspecialista()">Editar</button>
+
 
 
     </div>

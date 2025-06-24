@@ -35,6 +35,6 @@ export class InfoProfesionalComponent {
 
   editarEspecialista() {
     // Navega a la ruta de edición con el id del usuario
-    this.router.navigate(['/dashboard/profesional/editar', this.usuario.id]);
+    this.router.navigate(['/dashboard/editar-profesional', this.usuario.id]);
   }
 }

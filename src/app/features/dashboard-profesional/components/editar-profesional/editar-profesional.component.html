@@ -1,1 +1,103 @@
-<p>editar-profesional works!</p>
+<section class="bg-fondo w-full h-[100vh] px-16 md:px-24 py-6 md:py-12  ">
+
+    <div class="bg-white mt-[100px] lg:mt-[200px] border-t-8 border-secondary rounded-lg shadow-lg p-8 md:p-12">
+        <hgroup>
+            <h3 class="pb-2 text-2xl md:text-3xl lg:text-4xl font-secondary text-left text-primary">Editar el perfil de
+                {{especialista.nombre}} {{especialista.apellidos}}
+            </h3>
+            <h5 class=" pb-12 text-left text-lg md:text-2xl lg:text-3xl font-primary text-text">Introduce la información
+                correspondiente</h5>
+        </hgroup>
+
+        <form [formGroup]="form" (ngSubmit)="guardarCambios()" class="space-y-6">
+
+
+            <!-- Campo: Nombre -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Nombre*</label>
+                <input type="text" formControlName="nombre"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+
+            <!-- Campo: Apellidos -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Apellidos*</label>
+                <input type="text" formControlName="apellidos"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+
+            <!-- Campo: Servicio -->
+            <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Servicios
+                Asignados*</label>
+            <div formArrayName="servicios_asignados"
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-text">
+
+                <div *ngFor="let servicio of todosLosServicios; let i = index">
+                    <label class="inline-flex items-center font-primary text-lg md:text-xl lg:text-2xl">
+                        <input class="bg-secondary hover:text-secondary" type="checkbox" [formControlName]="i"
+                            class="mr-2" />
+                        {{ servicio.nombre }}
+                    </label>
+                </div>
+            </div>
+
+
+            <!-- Campo: Teléfono -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Teléfono*</label>
+                <input type="tel" formControlName="telefono"
+                    class="w-full border px-4 py-2 rounded  font-primary text-lg md:text-xl lg:text-2xl" required />
+                <div *ngIf="form.get('telefono')?.touched && form.get('telefono')?.invalid"
+                    class="text-red-600 font-primary text-sm mt-1">
+                    <span *ngIf="form.get('telefono')?.errors?.['required']"
+                        class="font-primary text-secondary text-lg md:text-xl lg:text-2xl">
+                        El número de teléfono es obligatorio.
+                    </span>
+                    <span *ngIf="form.get('telefono')?.errors?.['pattern']"
+                        class="font-primary text-secondary text-lg md:text-xl lg:text-2xl">
+                        Escribe un número de teléfono válido (9 dígitos).
+                    </span>
+                </div>
+            </div>
+
+            <!-- Campo: Email -->
+            <div>
+                <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Email</label>
+                <input type="email" formControlName="email"
+                    class="w-full border px-4 py-2 rounded  font-primary text-lg md:text-xl lg:text-2xl" />
+                <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+                    class="text-red-600 font-primary text-sm mt-1">
+                    <span *ngIf="form.get('email')?.errors?.['email']"
+                        class="font-primary text-secondary text-lg md:text-xl lg:text-2xl">
+                        Escribe un correo electrónico válido.
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Campo: Notas -->
+            <div>
+                <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Cargar
+                    imagen</label>
+                <input formControlName="foto_url"
+                    class="w-full border px-4 py-2 rounded  font-primary text-lg md:text-xl lg:text-2xl">
+            </div>
+
+
+            <button type="submit"
+                class="bg-primary hover:bg-white hover:text-primary hover:border-primary hover:border-[4px] text-white font-primary py-4 px-12 rounded text-xl md:text-2xl lg:text-3xl transition-colors duration-300">Guardar</button>
+            <button type="button"
+                class="bg-secondary hover:bg-white hover:text-secondary hover:border-secondary hover:border-[4px] text-white font-secondary py-4 px-12 rounded text-xl md:text-2xl lg:text-3xl transition-colors duration-300"
+                (click)="cancelar()">Cancelar</button>
+
+        </form>
+
+
+        <span class="text-left text-lg md:text-xl font-primary text-text">Los campos marcados con * son
+            obligatorios</span>
+
+    </div>
+</section>

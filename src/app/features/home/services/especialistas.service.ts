@@ -196,4 +196,17 @@ export class EspecialistasService {
     this.guardarEspecialistas();
     return true;
   }
+
+  actualizarEspecialista(especialistaActualizado: Especialista): boolean {
+    const index = this.especialistas.findIndex(e => e.id === especialistaActualizado.id);
+    if (index === -1) {
+      console.warn(`No se encontró especialista con id ${especialistaActualizado.id}`);
+      return false;
+    }
+
+    // Actualizamos la información
+    this.especialistas[index] = { ...especialistaActualizado };
+    this.guardarEspecialistas();
+    return true;
+  }
 }
