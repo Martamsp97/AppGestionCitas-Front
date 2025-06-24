@@ -14,7 +14,8 @@ import { InfoProfesionalComponent } from './features/dashboard-profesional/compo
 import { CardCitaComponent } from './features/dashboard-profesional/components/citas-profesional/card-cita/card-cita.component';
 import { EditarCitaComponent } from './features/dashboard-profesional/components/editar-cita/editar-cita.component';
 
-import { SharedModule } from './shared/shared.module';  // Importar SharedModule
+import { SharedModule } from './shared/shared.module';
+import { EditarProfesionalComponent } from './features/dashboard-profesional/components/editar-profesional/editar-profesional.component';  // Importar SharedModule
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SharedModule } from './shared/shared.module';  // Importar SharedModule
     InfoProfesionalComponent,
     CardCitaComponent,
     EditarCitaComponent,
+    EditarProfesionalComponent,
     // OJO: ya no declaramos ServiciosComponent ni EspecialistasComponent aquí
   ],
   imports: [

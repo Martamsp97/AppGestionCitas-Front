@@ -27,7 +27,7 @@ export class CitasProfesionalComponent {
 
     this.citas = citasGuardadas.filter(cita => cita.especialista.id === this.especialistaId);
 
-    localStorage.setItem('citas', JSON.stringify(this.citas));
+
     console.log('Citas cargadas con IDs:', this.citas);
   }
 

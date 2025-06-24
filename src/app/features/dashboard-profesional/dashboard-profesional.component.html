@@ -20,6 +20,8 @@
                 <div>
                     <h3 class="text-2xl md:text-3xl font-secondary text-primary mb-4">Información del perfil</h3>
                     <app-info-profesional *ngIf="usuarioActivo" [usuario]="usuarioActivo"
+                        [especialista]="usuarioActivo.especialista" [mostrarBorrar]="true"
+                        (eliminar)="eliminarEspecialista($event)">"
                         class="w-1/3"></app-info-profesional>
                 </div>
             </div>

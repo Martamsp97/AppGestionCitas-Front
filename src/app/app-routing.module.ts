@@ -5,6 +5,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { DashboardProfesionalComponent } from './features/dashboard-profesional/dashboard-profesional.component';
 import { DashboardAdminComponent } from './features/dashboard-admin/dashboard-admin.component';
 import { EditarCitaComponent } from './features/dashboard-profesional/components/editar-cita/editar-cita.component';
+import { EditarProfesionalComponent } from './features/dashboard-profesional/components/editar-profesional/editar-profesional.component';
 
 
 //Rutas principales de la aplicación. Se cargan al incicio. Sirven para navegar entre las diferentes secciones de la app.
@@ -32,7 +33,7 @@ const routes: Routes = [
       { path: 'admin/:id', component: DashboardAdminComponent, canActivate: [AuthGuard] },
       { path: 'profesional/:id', component: DashboardProfesionalComponent, },
       { path: 'editar-cita/:id', component: EditarCitaComponent },
-
+      { path: 'editar-profesional/:id', component: EditarProfesionalComponent }
 
     ]
   }
