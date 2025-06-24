@@ -16,7 +16,7 @@
                     class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Servicio*</label>
                 <select formControlName="servicio"
                     class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required>
-                    <option *ngFor="let servicio of cita.especialista.servicios_asignados" [ngValue]="servicio">
+                    <option *ngFor="let servicio of cita.especialista.servicios_asignados" [value]="servicio.id">
                         {{ servicio.nombre }}
                     </option>
                 </select>
@@ -96,7 +96,7 @@
             <div>
                 <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Notas
                     especialista</label>
-                <textarea formControlName="notas_cliente"
+                <textarea formControlName="notas_profesional"
                     class="w-full border px-4 py-2 rounded  font-primary text-lg md:text-xl lg:text-2xl"></textarea>
             </div>
 

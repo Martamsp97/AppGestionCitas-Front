@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EspecialistasService } from 'src/app/features/home/services/especialistas.service';
 import { Cita } from 'src/app/interfaces/cita.interface';
+import { Especialista } from 'src/app/interfaces/especialista.interface';
 
 @Component({
   selector: 'app-citas-profesional',
@@ -10,10 +12,12 @@ import { Cita } from 'src/app/interfaces/cita.interface';
 export class CitasProfesionalComponent {
   @Input() citas: Cita[] = [];
 
+  especialistaId: number = 0;
   // Inyectamos el router para navegar a la edición de citas
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.especialistaId = Number(this.route.snapshot.paramMap.get('id'));
     let citasGuardadas: Cita[] = JSON.parse(localStorage.getItem('citas') || '[]');
 
     citasGuardadas = citasGuardadas.map((cita, index) => ({
@@ -50,5 +54,14 @@ export class CitasProfesionalComponent {
   editarCita(cita: Cita) {
     // Puedes navegar con state o pasar por params
     this.router.navigate(['/citas/editar'], { state: { cita } });
+  }
+
+
+  /**
+   * Método para navegar a la página de creación de citas.
+   * Utiliza el router para pasar el ID del especialista.
+   */
+  crearCita() {
+    this.router.navigate(['/citas/especialista', this.especialistaId]);
   }
 }

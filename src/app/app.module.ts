@@ -16,6 +16,7 @@ import { EditarCitaComponent } from './features/dashboard-profesional/components
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { EditarCitaComponent } from './features/dashboard-profesional/components
     InfoProfesionalComponent,
     CardCitaComponent,
     EditarCitaComponent,
+
 
 
 

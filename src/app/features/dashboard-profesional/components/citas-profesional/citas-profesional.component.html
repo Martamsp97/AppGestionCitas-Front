@@ -1,3 +1,9 @@
 <div *ngFor="let cita of citas">
     <app-card-cita [cita]="cita" (eliminar)="borrarCita($event)" (editar)="editarCita($event)"></app-card-cita>
 </div>
+<a class="display-block w-full" (click)="crearCita()">
+    <button class="bg-primary font-primary text-white text-xl md:text-2xl px-4 py-2 rounded hover:bg-white
+    hover:text-primary hover:border-[3px] hover:border-primary">
+        Crear nueva cita
+    </button>
+</a>
