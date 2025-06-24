@@ -15,7 +15,9 @@ import { CardCitaComponent } from './features/dashboard-profesional/components/c
 import { EditarCitaComponent } from './features/dashboard-profesional/components/editar-cita/editar-cita.component';
 
 import { SharedModule } from './shared/shared.module';
-import { EditarProfesionalComponent } from './features/dashboard-profesional/components/editar-profesional/editar-profesional.component';  // Importar SharedModule
+import { EditarProfesionalComponent } from './features/dashboard-profesional/components/editar-profesional/editar-profesional.component';
+import { CrearServicioComponent } from './features/dashboard-admin/crear-servicio/crear-servicio.component';
+import { EditarServicioComponent } from './features/dashboard-admin/editar-servicio/editar-servicio.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,15 @@ import { EditarProfesionalComponent } from './features/dashboard-profesional/com
     CardCitaComponent,
     EditarCitaComponent,
     EditarProfesionalComponent,
-    // OJO: ya no declaramos ServiciosComponent ni EspecialistasComponent aquí
+    CrearServicioComponent,
+    EditarServicioComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    SharedModule  // Importar SharedModule para usar sus componentes
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

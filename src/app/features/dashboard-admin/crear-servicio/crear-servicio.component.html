@@ -1,0 +1,59 @@
+<section class="bg-fondo w-full h-[100vh] px-16 md:px-24 py-6 md:py-12  ">
+
+    <div class="bg-white mt-[100px] lg:mt-[200px] border-t-8 border-secondary rounded-lg shadow-lg p-8 md:p-12">
+        <hgroup>
+            <h3 class="pb-2 text-2xl md:text-3xl lg:text-4xl font-secondary text-left text-primary">Crear un servicio
+
+            </h3>
+            <h5 class=" pb-12 text-left text-lg md:text-2xl lg:text-3xl font-primary text-text">Introduce la información
+                correspondiente</h5>
+        </hgroup>
+
+        <form [formGroup]="form" (ngSubmit)="crear()" class="space-y-6">
+
+
+            <!-- Campo: Nombre -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Nombre*</label>
+                <input type="text" formControlName="nombre"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+
+            <!-- Campo: clave -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Clave*</label>
+                <input type="text" formControlName="clave" placeholder="nombre del servicio en minúsculas y sin tildes"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+            <!-- Campo: duracion_minutos -->
+            <div>
+                <label class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Duración en
+                    minutos*</label>
+                <input type="number" formControlName="duracion_minutos"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+            <!-- Campo: Precio -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Precio*</label>
+                <input type="number" formControlName="precio"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required />
+            </div>
+
+            <!-- Campo: Descripción -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Descripción</label>
+                <textarea formControlName="descripcion"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl"></textarea>
+            </div>
+
+            <button type="submit"
+                class="bg-primary hover:bg-white hover:text-primary hover:border-primary hover:border-[4px] text-white font-primary py-4 px-12 rounded text-xl md:text-2xl lg:text-3xl transition-colors duration-300">Guardar</button>
+            <button type="button"
+                class="bg-secondary hover:bg-white hover:text-secondary hover:border-secondary hover:border-[4px] text-white font-secondary py-4 px-12 rounded text-xl md:text-2xl lg:text-3xl transition-colors duration-300"
+                (click)="cancelar()">Cancelar</button>
+
+        </form>

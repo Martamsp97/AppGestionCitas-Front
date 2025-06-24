@@ -1,11 +1,25 @@
-<a [routerLink]="['/citas/servicio', servicio.id]">
-    <div class="card mb-4 hover:border-secondary border-4">
-        <div class="card-izquierda">
-            <h3 class=" text-primary font-secondary text-xl md:text-2xl mb-1 ">{{ servicio.nombre }}</h3>
-            <p class="text-text font-primary ">{{ servicio.duracion_minutos }} minutos</p>
+<div class="article hover:border-secondary border-4">
+    <a [routerLink]="['/citas/servicio', servicio.id]">
+        <div class="card mb-4 ">
+            <div class="card-izquierda">
+                <h3 class=" text-primary font-secondary text-xl md:text-2xl mb-1 ">{{ servicio.nombre }}</h3>
+                <p class="text-text font-primary ">{{ servicio.duracion_minutos }} minutos</p>
+            </div>
+            <div class="card-derecha">
+                <p class="text-secondary font-secondary text:2xl md:text-3xl"> {{servicio.precio| currency:'EUR'}}</p>
+            </div>
+
         </div>
-        <div class="card-derecha">
-            <p class="text-secondary font-secondary text:2xl md:text-3xl"> {{servicio.precio| currency:'EUR'}}</p>
+    </a>
+    <div>
+        <div>
+            <button *ngIf="rutaEsAdmin" (click)="editarServicio()" class=" bg-primary text-white px-4 py-2 text-xl md:text-2xl rounded hover:bg-white hover:text-primary
+                border-2 border-primary mt-3 mr-2">Editar
+                servicio</button>
+            <button *ngIf="rutaEsAdmin"
+                class="bg-secondary text-white px-4 py-2 rounded hover:bg-white text-xl md:text-2xl hover:text-secondary border-2 border-secondary mt-3 ml-2">
+                Borrar servicio
+            </button>
         </div>
     </div>
-</a>
+</div>

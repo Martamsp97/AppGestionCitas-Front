@@ -91,5 +91,16 @@ export class ServiciosService {
   private guardarServicios(): void {
     localStorage.setItem('servicios', JSON.stringify(this.servicios));
   }
+  /**
+   * Genera un nuevo ID para un servicio.
+   * Utiliza el ID máximo actual y le suma 1.
+   * @returns Nuevo ID único para un servicio
+   */
+  getNuevoId(): number {
+    return this.servicios.length > 0
+      ? Math.max(...this.servicios.map(s => s.id)) + 1
+      : 1;
+  }
+
 }
 
