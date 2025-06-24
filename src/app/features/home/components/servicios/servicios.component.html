@@ -11,4 +11,9 @@
         </app-servicio-card>
 
     </div>
+
+    <a *ngIf="rutaEsAdmin" routerLink="/dashboard/crear-servicio">
+        <button class=" bg-primary text-white px-4 py-2 text-xl md:text-2xl rounded hover:bg-white hover:text-primary
+            border-2 border-primary mt-3 mr-2">Crear un nuevo servicio</button>
+    </a>
 </section>

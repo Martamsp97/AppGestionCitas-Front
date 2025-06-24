@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Servicio } from '../../../../interfaces/servicio.interface';
 import { ServiciosService } from '../../services/servicios.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-servicios',
@@ -16,11 +17,11 @@ export class ServiciosComponent implements OnInit {
 
   // Definimos una propiedad servicios que será un array de objetos Servicio
   servicios: Servicio[] = [];
-
+  rutaEsAdmin = false;
   busquedaServicio: string = '';
   serviciosFiltradosArray: Servicio[] = [];
   // Inyectamos el servicio ServiciosService en el constructor para poder acceder a los servicios
-  constructor(private serviciosService: ServiciosService) { }
+  constructor(private serviciosService: ServiciosService, private router: Router) { }
 
   // Implementamos el método ngOnInit para inicializar el componente
   // Aquí llamamos al método getServicios del servicio ServiciosService para obtener la lista de servicios
@@ -28,6 +29,7 @@ export class ServiciosComponent implements OnInit {
   ngOnInit() {
     this.servicios = this.serviciosService.getServicios();
     this.serviciosFiltradosArray = this.servicios;
+    this.rutaEsAdmin = this.router.url.startsWith('/dashboard/admin');
   }
 
   // Definimos un método filtrarServicios que recibe un valor de búsqueda
