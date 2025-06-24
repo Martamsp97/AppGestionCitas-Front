@@ -7,7 +7,12 @@
         </a>
     </div>
     <ul class="nav-links flex space-x-6">
-        <!--         <li><a routerLink="/registro" class="text-text hover:text-primary font-primary md:text-lg">Registro</a></li> -->
-        <li><a routerLink="/login" class="text-text hover:text-primary font-primary md:text-lg">Login</a></li>
+        <li><a class="text-text hover:text-primary font-primary md:text-lg cursor-pointer" *ngIf="!user"
+                routerLink="/login">Login</a>
+        </li>
+        <li><a class="text-text hover:text-primary font-primary md:text-lg cursor-pointer" *ngIf="user"
+                (click)="logout()" routerLink="/login">Logout</a>
+        </li>
+
     </ul>
 </nav>
