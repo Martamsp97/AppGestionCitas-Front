@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private especialistasService: EspecialistasService) {
     // Creamos al usuario administrador por defecto
     this.usuarios.push({
-      id: 1,
+      id: 0,
       email: 'admin@sirona.com',
       password: '12345',
       rol: 'admin'

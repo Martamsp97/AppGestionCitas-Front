@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CitasService } from '../citas/services/citas.service';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -7,12 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-admin.component.css']
 })
 export class DashboardAdminComponent {
-  /*   constructor(private router: Router) { }
-  
-    ngOnInit() {
-      const usuario = JSON.parse(localStorage.getItem('usuario') || 'null');
-      if (!usuario || usuario.rol !== 'admin') {
-        this.router.navigate(['/']);
-      }
-    } */
+
+
 }

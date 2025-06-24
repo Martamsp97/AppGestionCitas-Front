@@ -21,8 +21,7 @@ export class EspecialistasComponent implements OnInit {
   especialistasFiltradosArray: Especialista[] = [];
 
   // Inyectamos el servicio EspecialistasService en el constructor para poder acceder a los especialistas
-  constructor(private especialistasService: EspecialistasService, private authService: AuthService,
-    private router: Router) { }
+  constructor(private especialistasService: EspecialistasService) { }
 
   // Definimos un método normalizarTexto que recibe un texto y lo normaliza
   // Este método elimina los signos diacríticos (tildes), convierte a minúsculas y elimina espacios al inicio y al final
