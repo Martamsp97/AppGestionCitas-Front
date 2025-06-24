@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { Especialista } from '../../../../interfaces/especialista.interface';
 import { EspecialistasService } from '../../services/especialistas.service';
+import { AuthService } from 'src/app/features/auth/services/auth.service';
+import { Usuario } from 'src/app/interfaces/usuario'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +21,8 @@ export class EspecialistasComponent implements OnInit {
   especialistasFiltradosArray: Especialista[] = [];
 
   // Inyectamos el servicio EspecialistasService en el constructor para poder acceder a los especialistas
-  constructor(private especialistasService: EspecialistasService) { }
+  constructor(private especialistasService: EspecialistasService, private authService: AuthService,
+    private router: Router) { }
 
   // Definimos un método normalizarTexto que recibe un texto y lo normaliza
   // Este método elimina los signos diacríticos (tildes), convierte a minúsculas y elimina espacios al inicio y al final

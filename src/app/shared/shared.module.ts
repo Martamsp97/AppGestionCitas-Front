@@ -6,6 +6,8 @@ import { ServiciosComponent } from '../features/home/components/servicios/servic
 import { EspecialistasComponent } from '../features/home/components/especialistas/especialistas.component';
 import { ServicioCardComponent } from '../features/home/components/servicios/servicio-card/servicio-card.component';
 import { EspecialistaCardComponent } from '../features/home/components/especialistas/especialista-card/especialista-card.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { EspecialistaCardComponent } from '../features/home/components/especiali
     EspecialistaCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    FormsModule
   ],
   exports: [
     ServiciosComponent,

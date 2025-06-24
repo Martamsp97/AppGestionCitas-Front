@@ -44,7 +44,7 @@ export class EditarCitaComponent implements OnInit {
       horaFin: [this.formatTimeOnly(cita.fin), Validators.required],
       notas_cliente: [cita.notas_cliente],
       notas_profesional: [cita.notas_profesional],
-      estado: [cita.estado],
+      estado: [cita.estado, Validators.required],
       servicio: [cita.servicio.nombre, Validators.required],
       especialista: [cita.especialista, Validators.required],
     });

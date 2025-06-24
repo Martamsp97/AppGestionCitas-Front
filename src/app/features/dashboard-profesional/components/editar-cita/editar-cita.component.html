@@ -100,6 +100,18 @@
                     class="w-full border px-4 py-2 rounded  font-primary text-lg md:text-xl lg:text-2xl"></textarea>
             </div>
 
+            <!-- Campo: Estado -->
+            <!-- Campo: Servicio -->
+            <div>
+                <label
+                    class="block font-primary text-secondary font-bold text-xl md:text-2xl lg:text-3xl">Estado*</label>
+                <select formControlName="estado"
+                    class="w-full border px-4 py-2 rounded font-primary text-lg md:text-xl lg:text-2xl" required>
+                    <option *ngFor="let estado of cita.estado" [value]="estado">
+                        {{estado}}
+                    </option>
+                </select>
+            </div>
             <!-- Confirmación previa -->
             <div *ngIf="errorSolapamiento" class="text-red-600">
                 ❌ La cita se solapa con otra.
