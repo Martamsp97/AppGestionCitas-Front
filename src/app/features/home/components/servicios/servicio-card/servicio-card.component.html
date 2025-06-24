@@ -16,8 +16,8 @@
             <button *ngIf="rutaEsAdmin" (click)="editarServicio()" class=" bg-primary text-white px-4 py-2 text-xl md:text-2xl rounded hover:bg-white hover:text-primary
                 border-2 border-primary mt-3 mr-2">Editar
                 servicio</button>
-            <button *ngIf="rutaEsAdmin"
-                class="bg-secondary text-white px-4 py-2 rounded hover:bg-white text-xl md:text-2xl hover:text-secondary border-2 border-secondary mt-3 ml-2">
+            <button *ngIf="rutaEsAdmin" (click)="borrar()" class=" bg-secondary text-white px-4 py-2 rounded hover:bg-white text-xl md:text-2xl
+                hover:text-secondary border-2 border-secondary mt-3 ml-2">
                 Borrar servicio
             </button>
         </div>

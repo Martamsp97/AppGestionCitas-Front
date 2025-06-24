@@ -7,7 +7,8 @@
 
     <div>
 
-        <app-servicio-card *ngFor="let servicio of serviciosFiltradosArray" [servicio]="servicio">
+        <app-servicio-card *ngFor="let servicio of serviciosFiltradosArray" [servicio]="servicio"
+            (eliminarServicio)="eliminarServicio($event)">
         </app-servicio-card>
 
     </div>

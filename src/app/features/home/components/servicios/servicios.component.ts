@@ -27,9 +27,15 @@ export class ServiciosComponent implements OnInit {
   // Aquí llamamos al método getServicios del servicio ServiciosService para obtener la lista de servicios
   //Llamamos al método filtrarServicios para inicializar el array de servicios filtrados
   ngOnInit() {
-    this.servicios = this.serviciosService.getServicios();
+    this.cargarServicios();
     this.serviciosFiltradosArray = this.servicios;
     this.rutaEsAdmin = this.router.url.startsWith('/dashboard/admin');
+  }
+
+  // Método para obtener los servicios desde el servicio y actualizar arrays
+  cargarServicios(): void {
+    this.servicios = this.serviciosService.getServicios();
+    this.serviciosFiltradosArray = this.servicios;
   }
 
   // Definimos un método filtrarServicios que recibe un valor de búsqueda
@@ -43,4 +49,17 @@ export class ServiciosComponent implements OnInit {
     );
   }
 
+  // Definimos un método eliminarServicio que recibe el id de un servicio
+  // Llama al servicio para borrar y recarga la lista
+  eliminarServicio(id: number): void {
+    if (confirm('¿Estás seguro que quieres eliminar este servicio?')) {
+      const eliminado = this.serviciosService.borrarServicio(id);
+      if (eliminado) {
+        alert('Servicio eliminado correctamente.');
+        this.cargarServicios();
+      } else {
+        alert('No se pudo eliminar el servicio. ID no encontrado.');
+      }
+    }
+  }
 }

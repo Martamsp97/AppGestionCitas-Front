@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { Servicio } from 'src/app/interfaces/servicio.interface';
 import { Usuario } from 'src/app/interfaces/usuario';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router'
 export class ServicioCardComponent {
   @Input() servicio!: Servicio;
   usuarioActivo?: Usuario;
+  @Output() eliminarServicio = new EventEmitter<number>();
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -24,6 +25,11 @@ export class ServicioCardComponent {
     // Navega a la ruta de edición con el id del servicio
     this.router.navigate(['/dashboard/editar-servicio', this.servicio.id]);
 
+  }
+
+  //emite el id del servicio a eliminar
+  borrar() {
+    this.eliminarServicio.emit(this.servicio.id);
   }
 
 }
